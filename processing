@@ -1,0 +1,429 @@
+import processing.serial.*;
+Serial myPort;                   
+
+import ddf.minim.*;
+Minim minim;
+AudioPlayer player;
+PImage img;
+PImage img1;
+
+PFont myFont;
+int b;
+int t;
+int m=255;
+
+float imgx=0;
+boolean flag=false;
+float h1=-3950;
+float h2=-4500;
+float h3=-5000;
+float h4=-5950;
+float h5=-6400;
+float h6=-6900;
+float h7=-7850;
+float h8=-8350;
+float h9=-8950;
+float h10=-9800;
+float h11=-10800;
+float h12=-11300;
+float h13=-11750;
+float h14=-12150;
+float h15=-12700;
+float h16=-13200;
+float h17=-13700;
+float h18=-14200;
+float h19=-14700;
+float h20=-15150;
+float h21=-15650;
+float h22=-16100;
+float h23=-16600;
+float h24=-17100;
+float h25=-17850;
+float h26=-18350;
+float h27=-19050;
+
+
+
+int score=0;
+
+
+void setup() {
+  size(1000, 800);
+  myFont=createFont("ALPH.TTF", 50);
+  minim = new Minim(this); 
+  player = minim.loadFile("daan.mp3");
+  img = loadImage("clap.gif");
+  img1 = loadImage("bj.jpg");
+  myPort = new Serial(this, "com3", 9600);
+  image(img1, 0, 0, 1000, 900);
+}
+
+void mousePressed() {
+  flag=true;
+}
+
+void draw() {
+  textFont(myFont);
+  fill(255);
+  textSize(60);
+  text("Welcome to the Melody Zone", 50, 250);
+
+
+  fill(m);
+  for (int i=0; i<=10000; i++) {
+    m-=5;
+  }
+
+
+
+  textSize(30);
+  text("Click To Start", 400, 490);
+
+
+  if (flag==true) {
+
+    background(0);
+
+    player.play(); 
+
+    stroke(t);
+    strokeWeight(10);
+    if (h1==600||h2==600||h3==600||h4==600||h5==600||h6==600||h7==600
+      ||h8==600||h9==600||h10==600||h11==600||h12==600||h13==600||h14==600
+      ||h15==600||h16==600||h17==600||h18==600||h19==600||h20==600||h21==
+      600||h22==600||h23==600||h24==600||h25==600||h26==600||h27==600 ) {
+      t=255;
+    } else {
+      t=150;
+    }
+    line(0, 600, 1000, 600);
+
+
+    if ( myPort.available() > 0) {  
+      b = myPort.read();
+    }
+    //print(b);
+    fill(255);
+    strokeWeight(10);
+    textSize(30);
+    text("Score:"+score, 800, 150);
+
+
+    stroke(255);
+    line1();
+    line2();
+    line3();
+    line4();
+    line5();
+    line6();
+    line7();
+    line8();
+    line9();
+    line10();
+    line11();
+    line12();
+    line13();
+    line14();
+    line15();
+    line16();
+    line17();
+    line18();
+    line19();
+    line20();
+    line21();
+    line22();
+    line23();
+    line24();
+    line25();
+    line26();
+    line27();
+    rain();
+    over();
+    
+  }
+}
+
+
+void line1() {
+  line(50, h1, 250, h1);
+  h1+=5;
+  if (h1==600&&b==3) {
+    score+=10;
+  }
+}
+
+
+void line2() {
+  line(300, h2, 500, h2);
+  h2+=5;
+  if (h2==600&&b==2) {
+    score+=10;
+  }
+}
+
+void line3() {
+  line(550, h3, 750, h3);
+  h3+=5;
+  if (h3==600&&b==1) {
+    score+=10;
+  }
+}
+
+void line4() {
+
+  line(50, h4, 250, h4);
+  h4+=5;
+  if (h4==600&&b==3) {
+    score+=10;
+  }
+}
+
+
+void line5() {
+  line(300, h5, 500, h5);
+  h5+=5;
+  if (h5==600&&b==2) {
+    score+=10;
+  }
+}
+
+void line6() {
+  line(550, h6, 750, h6);
+  h6+=5;
+  if (h6==600&&b==1) {
+    score+=10;
+  }
+}
+void line7() {
+  line(550, h7, 750, h7);
+  h7+=5;
+  if (h7==600&&b==1) {
+    score+=10;
+  }
+}
+
+
+void line8() {
+  line(300, h8, 500, h8);
+  h8+=5;
+  if (h8==600&&b==2) {
+    score+=10;
+  }
+}
+
+void line9() {
+
+  line(50, h9, 250, h9);
+  h9+=5;
+  if (h9==600&&b==3) {
+    score+=10;
+  }
+}
+void line10() {
+  line(550, h10, 750, h10);
+  h10+=5;
+  if (h10==600&&b==1) {
+    score+=10;
+  }
+}
+
+
+void line11() {
+  line(300, h11, 500, h11);
+  h11+=5;
+  if (h11==600&&b==2) {
+    score+=10;
+  }
+}
+
+void line12() {
+
+  line(50, h12, 250, h12);
+  h12+=5;
+  if (h12==600&&b==3) {
+    score+=10;
+  }
+}
+
+void line13() {
+  line(50, h13, 250, h13);
+  line(550, h13, 750, h13);
+  h13+=5;
+  if (h13==600&&b==1) {
+    score+=10;
+  }
+  if (h13==600&&b==3) {
+    score+=10;
+  }
+}
+void line14() {
+  line(300, h14, 500, h14);
+  h14+=5;
+  if (h14==600&&b==2) {
+    score+=10;
+  }
+}
+
+
+void line15() {
+  line(50, h15, 250, h15);
+  h15+=5;
+  if (h15==600&&b==3) {
+    score+=10;
+  }
+}
+void line16() {
+  line(300, h16, 500, h16);
+  h16+=5;
+  if (h16==600&&b==2) {
+    score+=10;
+  }
+}
+
+void line17() {
+  line(50, h17, 250, h17);
+  line(550, h17, 750, h17);
+  h17+=5;
+  if (h17==600&&b==3) {
+    score+=10;
+  }
+  if (h17==600&&b==1) {
+    score+=10;
+  }
+}
+void line18() {
+  line(300, h18, 500, h18);
+  h18+=5;
+  if (h18==600&&b==2) {
+    score+=10;
+  }
+}
+
+
+void line19() {
+  line(550, h19, 750, h19);
+  h19+=5;
+  if (h19==600&&b==1) {
+    score+=10;
+  }
+}
+void line20() {
+  line(300, h20, 500, h20);
+  h20+=5;
+  if (h20==600&&b==2) {
+    score+=10;
+  }
+}
+
+
+void line21() {
+  line(50, h21, 250, h21);
+  line(300, h21, 500, h21);
+  h21+=5;
+  if (h21==600&&b==3) {
+    score+=10;
+  }
+  if (h21==600&&b==2) {
+    score+=10;
+  }
+}
+
+void line22() {
+  line(300, h22, 500, h22);
+  line(550, h22, 750, h22);
+  h22+=5;
+  if (h22==600&&b==2) {
+    score+=10;
+  }
+  if (h22==600&&b==1) {
+    score+=10;
+  }
+}
+
+void line23() {
+  line(50, h23, 250, h23);
+  line(300, h23, 500, h23);
+  h23+=5;
+  if (h17==600&&b==2) {
+    score+=10;
+  }
+  if (h17==600&&b==3) {
+    score+=10;
+  }
+}
+void line24() {
+  line(50, h24, 250, h24);
+  line(300, h24, 500, h24);
+  h24+=5;
+  if (h24==600&&b==3) {
+    score+=10;
+  }
+  if (h24==600&&b==2) {
+    score+=10;
+  }
+}
+
+void line25() {
+  rect(550, h25, 200, 300);
+  h25+=5;
+  if (h25>=300&&h25<=600&&b==1) {
+    score+=10;
+  }
+}
+void line26() {
+  rect(50, h26, 200, 300);
+  h26+=5;
+  if (h26>=300&&h26<=600&&b==3) {
+    score+=10;
+  }
+}
+void line27() {
+  rect(300, h27, 200, 500);
+  h27+=5;
+  if (h27>=100&&h27<=600&&b==2) {
+    score+=10;
+  }
+}
+
+void over() {
+  if (h27>=900) {
+    clear();
+    player.pause();
+      
+    stroke(255);
+    textSize(50);
+    text("Game Clear !", 300, 350);
+    text("Your score is "+score+".", 300, 450);
+  
+    image(img, imgx, 500);
+    imgx+=5;
+     
+ 
+       
+    }
+  }
+
+
+
+
+
+
+void rain()
+{
+
+
+  for (int i =0; i<100; i++)
+  {
+
+    float x =random(1000); 
+    float y =random(800);
+    float l =random(30);
+    float deg = random(10); 
+    float a = random(100); 
+
+    stroke(150, a); 
+
+
+    line(x, y, x+(cos((75.0+deg)/180.0*3.14)*(l+40)), y+sin((75.0+deg)/180.0*3.14)*(l+50));
+  }
+}
